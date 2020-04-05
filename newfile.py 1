@@ -1,0 +1,39 @@
+
+import random
+container={}
+num=0
+while True:
+    print("Enter your details:\n")
+    fname=input("Enter first name:")
+    lname=input("Enter last name:")
+    email=input("Enter email:")
+    container["user"+str(num+1)]={"fname":fname,"lname":lname,\
+                                "email":email}
+    randomstring=[chr(random.randint(97,122)) for i in range(0,6)]
+    password=fname[0:2]+''.join(randomstring)+lname[-2]+lname[-1]
+    print("\nPassword="+password)
+    ask=input("\nSatisfied with password?(yes or no)")
+    if ask=="no":
+        while True:
+            password=input("Enter password:")
+            if(len(password)>=7):
+                break
+            else:
+                print("Password must be more than 6 characters")
+    print("\n")
+    for i in container["user"+str(num+1)]:
+        print(i+"=",end='')
+        print(container["user"+str(num+1)][i])
+           
+    done=input("\nWant to enter new user....?(yes/no)")
+    if(done=="no"):
+        print("\nAll users are:")
+        for i in container:
+            print("\n")
+            for j in container[i]:
+                print(i+"["+j+"]=",end='')
+                print(container[i][j])
+        break
+    num=num+1
+   
+   
